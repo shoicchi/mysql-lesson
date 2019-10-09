@@ -1,0 +1,146 @@
+]2;mysql -u root -p]1;mysqlEnter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 9
+Server version: 8.0.17 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+// ユーザーの作成 (localhostからアクセスしてくるユーザー）
+mysql> create user dbuser01@locakhost identified by 'password'
+Query OK, 0 rows affected (0.04 sec)
+
+// dbuser01 に対して mydb01 の全てのテーブルに関する全ての権限をgrant(付与)する
+mysql> grant all on mydb01.* to dbuser01@localhost;
+ERROR 1410 (42000): You are not allowed to create a user with GRANT
+mysql> grant all on mydb01.* to dbuser01@localhost;[8Gquit;[K[8Gselect user()[8G\c[Kselect user()[8G\c[Kselect user()[8Gquit;[K[8Ggrant all on mydb01.* to dbuser01@localhost;[8G[Kcreate user dbuser01@locakhost identified by 'aqay2545sS@@';;[K;[K;[K;[K;[K;[K;[K;[K;[K;[K;[K;[K;[K;[K;[K;[K;[K;[K;[K;[K;[K;[K;[K;[K;[K;[K;[K;[K;[K
+ERROR 1396 (HY000): Operation CREATE USER failed for 'dbuser01'@'locakhost'
+
+// typoしていたため先程作成したユーザーを削除
+mysql> drop user dbuser01@locakhost;
+Query OK, 0 rows affected (0.02 sec)
+
+// 再度作成
+mysql> create user dbuser01@localhost identified by 'password';
+Query OK, 0 rows affected (0.02 sec)
+
+// 再度権限付与
+mysql> grant all on mydb01.* to dbuser01@'localhost;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> quit;
+Bye
+
+
+// ログイン時にユーザーとDbを選択
+]2;mysql -u dbuser01 -p mydb01
+]1;mysqlEnter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 10
+Server version: 8.0.17 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+// ユーザーが反映されているか確認
+mysql> select user();
++--------------------+
+| user()             |
++--------------------+
+| dbuser01@localhost |
++--------------------+
+1 row in set (0.00 sec)
+
+
+// dbuser01に対してはmydb01に対する権限しか付与していないのでmydb02等は表示されない。
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mydb01             |
++--------------------+
+2 rows in set (0.00 sec)
+
+mysql> quit;
+Bye
+
+
+// rootユーザーで再度ログイン
+]2;mysql -u root -p
+nter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 11
+Server version: 8.0.17 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+
+// mydb01を削除
+mysql> drop database mydb01;
+Query OK, 0 rows affected (0.02 sec)
+
+
+// 確認
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mydb02             |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+
+// mydb02も削除
+mysql> drop database mydb02;
+Query OK, 0 rows affected (0.01 sec)
+
+
+// 確認
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.00 sec)
+
+
+// dbuser01も削除
+mysql> drop user dbuser01@localhost;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select user();
++----------------+
+| user()         |
++----------------+
+| root@localhost |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> quit
+Bye
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                            ]2;vagrant@localhost: /vagrant/mysql-lesson]1;../mysql-lesson[0m[27m[24m[J[39m[0m[49m[40m[39m vagrant@localhost [44m[30m[30m /vagrant/mysql-lesson [42m[34m[30m  master [49m[32m[39m [K[?1h=
