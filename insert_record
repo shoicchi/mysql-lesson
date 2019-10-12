@@ -1,0 +1,93 @@
+Last login: Sun Oct 13 02:21:24 on ttys000
+cd d[1m[7m%[27m[1m[0m                                                                                                                                                                                                            ]2;shoji@SMacBook-Pro: ~]1;~[0m[27m[24m[J[39m[0m[49m[40m[39m shoji@SMacBook-Pro [44m[30m[30m ~ [49m[34m[39m
+   [K[?1h=[?2004hccd deDesktop[1m/[0m[0m/work[1m/[0m[0m/vagrant[1m/[0m[0m/m[?1l>[?2004l
+]2;cd Desktop/work/vagrant/m]1;cdcd: no such file or directory: Desktop/work/vagrant/m
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                            ]2;shoji@SMacBook-Pro: ~]1;~[0m[27m[24m[J[39m[0m[49m[40m[39m [31m✘[40m[39m shoji@SMacBook-Pro [44m[30m[30m ~ [49m[34m[39m
+   [K[?1h=[?2004hcd Desktop/work/vagrant/m centos7[1m/[0m[0m [?1l>[?2004l
+]2;cd Desktop/work/vagrant/centos7]1;cd[1m[7m%[27m[1m[0m                                                                                                                                                                                                            ]2;shoji@SMacBook-Pro: ~/Desktop/work/vagrant/centos7]1;..grant/centos7[0m[27m[24m[J[39m[0m[49m[40m[39m shoji@SMacBook-Pro [44m[30m[30m ~/Desktop/work/vagrant/centos7 [49m[34m[39m
+   [K[?1h=[?2004hvvagrant ssh[?1l>[?2004l
+]2;vagrant ssh]1;vagrantLast login: Sat Oct 12 17:21:41 2019 from 10.0.2.2
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                            ]2;vagrant@localhost: ~]1;~[0m[27m[24m[J[39m[0m[49m[40m[39m vagrant@localhost [44m[30m[30m ~ [49m[34m[39m [K[?1h=ccd /va
+[J[38;5;27mvagrant[0m/  [J[38;5;27mvar[0m/    [J[A[0m[27m[24m[0m[27m[24m[39m[49m[25Ccd /va[K[0m[27m[24m[39m[49mgrant[1m/[0m
+[J[7mvagrant/[0m  [J[38;5;27mvar[0m/    [J[A[0m[27m[24m[0m[27m[24m[39m[49m[25Ccd /vagrant[1m/[0m[K[0m[27m[24m[39m[49m
+[7mvagrant/[0m  [7mvagrant/[0m  [A[0m[27m[24m[0m[27m[24m[39m[49m[25Ccd /vagrant[1m/[0m[K[0m[27m[24m[39m[49m
+[J[A[37C[0m/mysql-lesson[1m/[0m[0m [?1l>
+[J]2;cd /vagrant/mysql-lesson]1;cd[1m[7m%[27m[1m[0m                                                                                                                                                                                                            ]2;vagrant@localhost: /vagrant/mysql-lesson]1;../mysql-lesson[0m[27m[24m[J[39m[0m[49m[40m[39m vagrant@localhost [44m[30m[30m /vagrant/mysql-lesson [43m[34m[30m  master ● [49m[33m[39m [K[?1h=mmya sql -u myapp_user -p myapp[?1l>
+]2;mysql -u myapp_user -p myapp]1;mysqlEnter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 18
+Server version: 8.0.17 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> [H[2Jmysql> \. ./myapp.sql
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+
+Query OK, 0 rows affected (0.08 sec)
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'insert into users (id, name, score) values (2, "fkoji", 8.2)
+insert into users (' at line 2
+mysql> D\. ./myapp.sql
+Query OK, 0 rows affected (0.03 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'insert into users (id, name, score) values (2, "fkoji", 8.2)
+insert into users (' at line 2
+mysql> C\. ./myapp.sql
+Query OK, 0 rows affected (0.02 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'insert into users (id, name, score) values (2, 'fkoji' , 8.2)
+insert into users ' at line 2
+mysql> \. ./myapp.sql
+Query OK, 0 rows affected (0.01 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+Query OK, 1 row affected (0.02 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
++------+------------+-------+
+| id   | name       | score |
++------+------------+-------+
+|    1 | taguchi    |   5.8 |
+|    2 | fkoji      |   8.2 |
+|    3 | dotinstall |   6.1 |
+|    4 | yamada     |  NULL |
++------+------------+-------+
+4 rows in set (0.00 sec)
+
+mysql> \. ./myapp.sql[8Gquit;[K[8G\. ./myapp.sql
+Query OK, 0 rows affected (0.01 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+Query OK, 4 rows affected (0.01 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
++------+------------+-------+
+| id   | name       | score |
++------+------------+-------+
+|    1 | taguchi    |   5.8 |
+|    2 | fkoji      |   8.2 |
+|    3 | dotinstall |   6.1 |
+|    4 | yamada     |  NULL |
++------+------------+-------+
+4 rows in set (0.00 sec)
+
+mysql> quit;
+Bye
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                            ]2;vagrant@localhost: /vagrant/mysql-lesson]1;../mysql-lesson[0m[27m[24m[J[39m[0m[49m[40m[39m vagrant@localhost [44m[30m[30m /vagrant/mysql-lesson [43m[34m[30m  master ● [49m[33m[39m [K[?1h=
