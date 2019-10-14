@@ -50,7 +50,7 @@ insert into users (id, name, score) values (3, 'dotinstall', 6.1 );
 insert into users (id, name, score) values (4, 'yamada', null);
 */
 
-# 上の書き換え
+# 上の書き換え(同じ記述がなくても以下のように書ける)
 insert into users (id, name, score) values
 (1, 'taguchi', 5.8),
 (2, 'fkoji' , 8.2),
